@@ -53,10 +53,10 @@ build-image-with-cache:
 	docker build -t $(NAME) .
 run-test-image: 
 	docker rm -f angular6-i18n-demo 2>/dev/null || true 
-	docker run -it -d --rm -p 80:80 --name angular6-i18n-demo "$(NAME)"
+	docker run -it -d --rm -e VIRTUAL_HOST=angular2.huxii.com -e VIRTUAL_PORT=80 -e ENABLE_IPV6=true -p 8181:80 --name angular6-i18n-demo "$(NAME)"
 run-test-image-interactive: 
 	docker rm -f angular6-i18n-demo 2>/dev/null || true 
-	docker run -it --rm -p 80:80 --name angular6-i18n-demo "$(NAME)"
+	docker run -it --rm -e VIRTUAL_HOST=angular2.huxii.com -e VIRTUAL_PORT=80 -e ENABLE_IPV6=true -p 8181:80 --name angular6-i18n-demo "$(NAME)"
 remove-test-container:
 	docker rm -f angular6-i18n-demo
 run-container-shell:
